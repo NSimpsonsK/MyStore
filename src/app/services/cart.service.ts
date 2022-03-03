@@ -8,12 +8,35 @@ import { Product } from '../modules/product';
 })
 export class CartService {
   cartItems: cartItem[] = [];
+  name: string = "";
+  adress: string = "";
+  lastTotal: number = 0;
   
 
   constructor() { }
 
   getProducts(): cartItem[]{
     return this.cartItems;
+  }
+
+  setAdress(adress: string){
+    this.adress = adress;
+  }
+
+  getAdress(): string{
+    return this.adress;
+  }
+
+  setName(name: string){
+    this.name = name;
+  }
+
+  getName(): string{
+    return this.name;
+  }
+
+  getLastTotal(): number{
+    return this.lastTotal;
   }
 
   addProduct(cartItem: cartItem): cartItem[]{
@@ -44,10 +67,10 @@ export class CartService {
 
   calculateTotal():number{
     this.removeFromCartIfZero();
-    let total:number = 0;
+    this.lastTotal = 0;
     this.cartItems.forEach(c => {
-      total+=(c.product.price * c.quantity);
+      this.lastTotal+=(c.product.price * c.quantity);
     });
-    return total;
+    return this.lastTotal;
   }
 }
