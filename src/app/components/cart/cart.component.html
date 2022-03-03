@@ -1,1 +1,37 @@
-<p>cart works!</p>
+<div class="cart-container">
+    <div class="cart-panel">
+        <div *ngFor="let item of cartList">
+            <div class="cart-item-details">
+                <img class="img" src="{{item.product.url}}">
+                <p><b>{{item.product.name}}</b></p>
+                <p>${{item.product.price}}</p>
+                <div>
+                    <label>Amount</label>
+                    <input type="number" id="quantity" min="1" max="6" [(ngModel)]="item.quantity"
+                        (ngModelChange)="quantityChange()">
+                </div>
+                <button (click)="removeItem(item)">Remove Item</button>
+            </div>
+        </div>
+        <p><b><div *ngIf="total > 0" class="price">
+            Total: {{total}}
+        </div></b></p>
+    </div>
+
+    <form class="form-margin" #form="ngForm" *ngIf="cartList.length > 0" (ngSubmit)="submit()">
+        <p>
+            Name:<br>
+            <input type="text" name="name" id="name" required minlength="4" placeholder="(minimum 4 characters" [(ngModel)]="name">
+        </p>
+        <p>
+            Adress:<br>
+            <input type="text" name="adress" id="adress" required minlength="4" placeholder="(minimum 4 characters" [(ngModel)]="adress">
+        </p>
+        <p>
+            Credit Card:<br>
+            <input type="text" name="creditCard" id="creditCard" required minlength="16" maxlength="16" placeholder="16 digit Card Number" pattern="[0-9]{16}" [(ngModel)]="creditCard">
+        </p>
+        <button [disabled]="form.invalid" type="submit">Submit</button>
+    </form>
+
+</div>

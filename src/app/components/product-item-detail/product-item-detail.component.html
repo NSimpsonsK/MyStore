@@ -5,7 +5,7 @@
     <div class=" detail-item">
         <p><b>{{product.name}}</b></p>
         <p><b>${{product.price}}</b></p>
-        <select class="select-input">
+        <select class="select-input" name="quantity" id="quantity" [(ngModel)]="quantity">
             <option>1</option>
             <option>2</option>
             <option>3</option>
