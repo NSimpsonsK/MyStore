@@ -29,6 +29,7 @@
         </p>
         <p>
             Credit Card:<br>
+            <!--number check made with pattern-->
             <input type="text" name="creditCard" id="creditCard" required minlength="16" maxlength="16" placeholder="16 digit Card Number" pattern="[0-9]{16}" [(ngModel)]="creditCard">
         </p>
         <button [disabled]="form.invalid" type="submit">Submit</button>
