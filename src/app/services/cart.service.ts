@@ -46,7 +46,6 @@ export class CartService {
     }else{
       this.cartItems.push(cartItem);
     }
-    this.calculateTotal();
     console.log(this.cartItems);
     return this.cartItems;
   }
