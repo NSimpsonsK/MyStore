@@ -40,7 +40,13 @@ export class CartService {
   }
 
   addProduct(cartItem: cartItem): cartItem[]{
-    this.cartItems.push(cartItem);
+    let found = this.products.find(p => p.id == product.id);
+    if(found){
+      found.quantity +=1;
+    }else{
+      this.cartItems.push(cartItem);
+    }
+    this.calculateTotal();
     console.log(this.cartItems);
     return this.cartItems;
   }
