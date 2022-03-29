@@ -40,7 +40,7 @@ export class CartService {
   }
 
   addProduct(cartItem: cartItem): cartItem[]{
-    let found = this.products.find(p => p.id == product.id);
+    let found = this.cartItems.find(p => p.id == cartItem.product.id);
     if(found){
       found.quantity +=1;
     }else{
